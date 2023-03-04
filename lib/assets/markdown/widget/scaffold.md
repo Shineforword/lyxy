@@ -34,4 +34,6 @@ class LyxyScaffoldDemo extends StatelessWidget {
     );
   }
 }
+// 脚手架管理 .... 方法
+Scaffold.of(context)......
 ```
