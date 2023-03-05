@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lyxy_app/explore/widget/ly_widget_material_app.dart';
 import 'package:lyxy_app/explore/widget/lyxy_container.dart';
+import 'package:lyxy_app/explore/widget/lyxy_image.dart';
 import '../src/lyxy_explore_Item.dart';
 import '../widget/lyxy_widget_life.dart';
 import 'package:lyxy_app/explore/src/lyxy_codes.dart';
@@ -39,6 +40,7 @@ class LyxyWidget extends StatelessWidget {
           LyxyExploreItem(title: "7.Scaffold 脚手架 ", page: LyxyScaffold()),
           LyxyExploreItem(title: "8.Container", page: LyxyContainer()),
           LyxyExploreItem(title: "9.Text ", page: LyxyText()),
+          LyxyExploreItem(title: "10.Image ", page: LyxyImage()),
         ],
       ),
     );
