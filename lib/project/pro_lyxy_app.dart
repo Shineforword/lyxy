@@ -12,12 +12,14 @@ class ProLyxyApp extends StatelessWidget {
     return MaterialApp(
       // 不展示debug条幅
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: '',
+      // 全局样式管理
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        highlightColor: const Color.fromRGBO(255, 255, 255, 0.5),
-        splashColor: Colors.white70,
-      ),
+          primarySwatch: Colors.blue,
+          highlightColor: const Color.fromRGBO(255, 255, 255, 0.5),
+          splashColor: Colors.white70,
+          // 导航配置
+          appBarTheme: null),
       // 初始化路由
       initialRoute: "/",
       // 路由表

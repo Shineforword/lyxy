@@ -2,6 +2,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:lyxy_app/explore/widget/ly_widget_material_app.dart';
+import 'package:lyxy_app/explore/widget/lyxy_button.dart';
 import 'package:lyxy_app/explore/widget/lyxy_container.dart';
 import 'package:lyxy_app/explore/widget/lyxy_image.dart';
 import '../src/lyxy_explore_Item.dart';
@@ -41,6 +42,7 @@ class LyxyWidget extends StatelessWidget {
           LyxyExploreItem(title: "8.Container", page: LyxyContainer()),
           LyxyExploreItem(title: "9.Text ", page: LyxyText()),
           LyxyExploreItem(title: "10.Image ", page: LyxyImage()),
+          LyxyExploreItem(title: "11.Button ", page: LyxyButton()),
         ],
       ),
     );
