@@ -2,6 +2,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 
+import '../demo/drawer_demo.dart';
 import './pro_homepage.dart';
 import './pro_category.dart';
 import './pro_explore.dart';
@@ -56,6 +57,7 @@ class _ProBottomTabState extends State<ProBottomTab> {
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "My"),
         ],
       ),
+      drawer: const DrawerDemo(),
     );
   }
 }

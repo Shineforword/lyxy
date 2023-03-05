@@ -10,8 +10,10 @@ import '../widget/lyxy_widget_life.dart';
 import 'package:lyxy_app/explore/src/lyxy_codes.dart';
 
 import 'lyxy_scaffold.dart';
+import 'lyxy_tabController.dart';
 import 'lyxy_text.dart';
 import 'lyxy_widget_app_life.dart';
+import './lyxy_view.dart';
 
 const String img1 =
     "https://upload-images.jianshu.io/upload_images/28020825-8f914692886fa6d0.jpg";
@@ -43,6 +45,9 @@ class LyxyWidget extends StatelessWidget {
           LyxyExploreItem(title: "9.Text ", page: LyxyText()),
           LyxyExploreItem(title: "10.Image ", page: LyxyImage()),
           LyxyExploreItem(title: "11.Button ", page: LyxyButton()),
+          LyxyExploreItem(
+              title: "12.DefaultTabController", page: LyxyTabController()),
+          LyxyExploreItem(title: "13.View 网格视图 ", page: ViewDemo()),
         ],
       ),
     );

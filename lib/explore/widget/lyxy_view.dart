@@ -1,9 +1,8 @@
 // ignore_for_file: prefer_const_constructors
-import 'dart:async';
-
+// ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import '../model/post.dart';
+import '../../model/post.dart';
+import '../src/lyxy_codes.dart';
 
 class ViewDemo extends StatelessWidget {
   const ViewDemo({Key? key}) : super(key: key);
@@ -72,7 +71,22 @@ class ViewDemo extends StatelessWidget {
     // );
 
     /// 网格视图
-    return GridViewDemo();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("网格视图"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.code),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      LyxyCodes(mdpwd: "lib/assets/markdown/widget/view.md")));
+            },
+          )
+        ],
+      ),
+      body: GridViewDemo(),
+    );
   }
 }
 
