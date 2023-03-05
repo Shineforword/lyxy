@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:lyxy_app/project/pro_splash.dart';
 import './pro_bottom_tab.dart';
 
 // 初始化
@@ -25,7 +26,7 @@ class ProLyxyApp extends StatelessWidget {
       // 路由表
       routes: {
         ///project
-        "/": (context) => const ProBottomTab(),
+        "/": (context) => const ProSplashPage(),
       },
     );
   }
