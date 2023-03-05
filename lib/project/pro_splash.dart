@@ -49,56 +49,44 @@ class _ProSplashPageState extends State<ProSplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Text(
+                "Many thanks for us to do sth ® ",
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 20),
               // 图标
               Stack(
                 alignment: Alignment.center,
                 children: [
+                  Image.asset(
+                    AssetsImages.logo,
+                    fit: BoxFit.cover,
+                  ),
                   // 底部
                   Container(
                     width: 120,
                     height: 120,
                     decoration: BoxDecoration(
-                      color: Colors.blue[100],
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(120 / 2),
                     ),
                   ),
-                  // 图标
-                  Container(
-                      child: ClipRRect(
-                    borderRadius: BorderRadius.circular(40),
-                    child: Image.asset(
-                      AssetsImages.logo,
-                      width: 80,
-                      height: 80,
-                      fit: BoxFit.cover,
-                    ),
-                  )),
-                  //
                   FlutterLogo(size: 30)
                 ],
               ),
-
               // 间距
-              const SizedBox(height: 24),
-
-              // 文字
-              const Text(
-                'Online Flutter',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-
-              // 间距
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               // 计时器
               Text(
-                '${number == 0 ? "" : number}',
+                // '${number == 0 ? "Welcome" : number}',
+                "Welcome",
                 style: const TextStyle(
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
