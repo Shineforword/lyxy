@@ -8,6 +8,7 @@ import '../widget/lyxy_widget_life.dart';
 import 'package:lyxy_app/explore/src/lyxy_codes.dart';
 
 import 'lyxy_scaffold.dart';
+import 'lyxy_text.dart';
 import 'lyxy_widget_app_life.dart';
 
 const String img1 =
@@ -37,6 +38,7 @@ class LyxyWidget extends StatelessWidget {
               title: "6.Material App ", page: LyWidgetMaterialApp()),
           LyxyExploreItem(title: "7.Scaffold 脚手架 ", page: LyxyScaffold()),
           LyxyExploreItem(title: "8.Container", page: LyxyContainer()),
+          LyxyExploreItem(title: "9.Text ", page: LyxyText()),
         ],
       ),
     );

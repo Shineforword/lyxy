@@ -21,6 +21,9 @@ class Constrains extends StatelessWidget {
           LyxyExploreItem(title: "3.tight紧约束", page: Constrain03()),
           LyxyExploreItem(title: "4.unbounded无边界", page: Constrain04()),
           LyxyExploreItem(title: "5.flex", page: Constrain05()),
+          LyxyExploreItem(title: "6.stack 层叠", page: Constrain06()),
+          LyxyExploreItem(title: "7.wrap 流式布局", page: Constrain07()),
+          LyxyExploreItem(title: "8.Align ", page: Constrain08()),
         ],
       ),
     );
@@ -235,6 +238,151 @@ class Constrain05 extends StatelessWidget {
                   )),
             ],
           ),
+        ));
+  }
+}
+
+class Constrain06 extends StatelessWidget {
+  const Constrain06({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("stack"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.code),
+              tooltip: "code",
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => LyxyCodes(
+                        mdpwd:
+                            "lib/assets/markdown/constrains/constrain06.md")));
+              },
+            ),
+          ],
+        ),
+        body: Stack(
+          alignment: Alignment.center,
+          // 裁切
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              width: 300,
+              height: 300,
+              color: Colors.amber,
+            ),
+            Container(
+              width: 200,
+              height: 200,
+              color: Colors.blueGrey,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.blue,
+            ),
+            // 绝对定位
+            Positioned(
+                left: 250,
+                bottom: 0,
+                child: FlutterLogo(
+                  size: 100,
+                ))
+          ],
+        ));
+  }
+}
+
+class Constrain07 extends StatelessWidget {
+  const Constrain07({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("wrap"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.code),
+              tooltip: "code",
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => LyxyCodes(
+                        mdpwd:
+                            "lib/assets/markdown/constrains/constrain07.md")));
+              },
+            ),
+          ],
+        ),
+        body: Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          alignment: WrapAlignment.start,
+          crossAxisAlignment: WrapCrossAlignment.start,
+          verticalDirection: VerticalDirection.down,
+          // 裁切
+          children: [
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.amber,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.blueGrey,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.blue,
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              color: Colors.blue,
+            ),
+            Container(
+              width: 150,
+              height: 150,
+              color: Colors.blue,
+            ),
+          ],
+        ));
+  }
+}
+
+class Constrain08 extends StatelessWidget {
+  const Constrain08({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text("wrap"),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.code),
+              tooltip: "code",
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => LyxyCodes(
+                        mdpwd:
+                            "lib/assets/markdown/constrains/constrain08.md")));
+              },
+            ),
+          ],
+        ),
+        body: Align(
+          // Align 高宽因子 调试器查看 (子元素的宽高倍数) - 不设置即Align充满body
+          widthFactor: 2,
+          heightFactor: 2,
+          alignment: Alignment.centerLeft,
+          child: Container(
+            width: 100,
+            height: 100,
+            color: Colors.amber,
+          ),
+          // 裁切
         ));
   }
 }
