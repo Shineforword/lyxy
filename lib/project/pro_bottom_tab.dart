@@ -40,6 +40,7 @@ class _ProBottomTabState extends State<ProBottomTab> {
           ? AppBar(
               title: Text("${listNavs[currentIndex]}"),
               elevation: 0.0,
+              leading: null,
             )
           : null,
       body: listTabs[currentIndex],

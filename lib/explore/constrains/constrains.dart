@@ -54,21 +54,26 @@ class Constrain01 extends StatelessWidget {
         child: Container(
           width: 300,
           height: 300,
-          color: Colors.blue[300],
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "位置确定后,才按大小显示",
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Text("1.上层向下层传递约束条件"),
-              Text("2.下层向上层传递大小信息"),
-              Text("3.上层决定下层位置信息"),
-            ],
+          color: Colors.amber,
+          child: Container(
+            color: Colors.blue,
+            width: 100,
+            height: 100,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "位置确定后,才按大小显示",
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text("1.上层向下层传递约束条件"),
+                Text("2.下层向上层传递大小信息"),
+                Text("3.上层决定下层位置信息"),
+              ],
+            ),
           ),
         ),
       ),
