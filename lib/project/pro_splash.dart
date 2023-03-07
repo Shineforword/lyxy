@@ -52,10 +52,10 @@ class _ProSplashPageState extends State<ProSplashPage> {
               Text(
                 "Many thanks for us to do sth ® ",
                 style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Poppins"),
               ),
               SizedBox(height: 20),
               // 图标
@@ -85,10 +85,10 @@ class _ProSplashPageState extends State<ProSplashPage> {
                 // '${number == 0 ? "Welcome" : number}',
                 "Welcome ${number == 0 ? "done" : "($number s)"}",
                 style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Poppins"),
               ),
             ],
           ),
