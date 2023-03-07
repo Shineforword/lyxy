@@ -31,7 +31,7 @@ class _ProSplashPageState extends State<ProSplashPage> {
       if (number == 0) {
         // ProWelcome ProBottomTab
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ProWelcome()));
+            context, MaterialPageRoute(builder: (context) => ProBottomTab()));
       }
     }
   }
