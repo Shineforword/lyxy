@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:lyxy_app/pages/pro_zone/pro_wechat_post.dart';
 
 import './pro_login.dart';
 
@@ -28,6 +29,13 @@ class ProMy extends StatelessWidget {
                 title: "Collection",
                 icon: Icon(Icons.collections, size: 20, color: Colors.blue)),
             ProMyItem(
+                itemClicked: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      fullscreenDialog: true,
+                      builder: (BuildContext context) {
+                        return ProWechatPost();
+                      }));
+                },
                 title: "Zone",
                 icon: Icon(Icons.child_friendly, size: 20, color: Colors.blue)),
             ProMyItem(
@@ -117,14 +125,25 @@ class MineHeader extends StatelessWidget {
 }
 
 /// - item
+typedef ItemClickedCallback = void Function();
+
 class ProMyItem extends StatelessWidget {
   final String title;
   final Icon icon;
+  final ItemClickedCallback? itemClicked;
 
-  const ProMyItem({Key? key, required this.title, required this.icon})
+  const ProMyItem(
+      {Key? key, required this.title, required this.icon, this.itemClicked})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: itemClicked,
+      child: _builderItem(),
+    );
+  }
+
+  Widget _builderItem() {
     return Container(
         height: 64,
         width: double.infinity,
