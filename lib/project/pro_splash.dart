@@ -83,7 +83,7 @@ class _ProSplashPageState extends State<ProSplashPage> {
               // 计时器
               Text(
                 // '${number == 0 ? "Welcome" : number}',
-                "Welcome",
+                "Welcome ${number == 0 ? "done" : "($number s)"}",
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 20,
