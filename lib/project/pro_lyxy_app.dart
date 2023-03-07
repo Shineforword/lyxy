@@ -19,6 +19,7 @@ class ProLyxyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           highlightColor: const Color.fromRGBO(255, 255, 255, 0.5),
           splashColor: Colors.white70,
+          fontFamily: "Poppins",
           // 导航配置
           appBarTheme: null),
       // 初始化路由

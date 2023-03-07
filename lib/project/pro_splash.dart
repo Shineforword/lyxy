@@ -5,6 +5,7 @@ import 'package:lyxy_app/project/pro_bottom_tab.dart';
 
 import '../common/app_colors.dart';
 import '../common/assets.dart';
+import '../pages/pro_welcome.dart';
 
 class ProSplashPage extends StatefulWidget {
   const ProSplashPage({Key? key}) : super(key: key);
@@ -28,8 +29,9 @@ class _ProSplashPageState extends State<ProSplashPage> {
       });
       // 倒计时结束, 进入 welcome
       if (number == 0) {
+        // ProWelcome ProBottomTab
         Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => ProBottomTab()));
+            context, MaterialPageRoute(builder: (context) => ProWelcome()));
       }
     }
   }
