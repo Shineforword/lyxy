@@ -29,7 +29,7 @@ class _ProWechatPostState extends State<ProWechatPost> {
             onPressed: () async {
               final List<AssetEntity>? result =
                   await AssetPicker.pickAssets(context);
-              print(result);
+              print(result?.length);
             },
             child: Text("选取"))
       ],
