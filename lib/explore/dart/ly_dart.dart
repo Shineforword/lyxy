@@ -44,8 +44,11 @@ class LyDart extends StatelessWidget {
               title: "0.List",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/list.md")),
           LyxyExploreItem(
-              title: "B0.注释/函数表达式",
-              page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/list.md")),
+              title: "A0.注释comments",
+              page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/comments.md")),
+          LyxyExploreItem(
+              title: "A1.函数function",
+              page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/function.md")),
         ],
       ),
     );
