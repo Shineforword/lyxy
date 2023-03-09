@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
+import 'package:lyxy_app/pages/pro_zone/pro_gallery.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 import '../../utils/config.dart';
@@ -25,6 +26,38 @@ class _ProWechatPostState extends State<ProWechatPost> {
     );
   }
 
+  // 主图
+  Widget _buildMainView() {
+    return Column(
+      children: [_bulidPhotoList()],
+    );
+  }
+
+  // 图片项
+  Widget _buildPhotoItem(AssetEntity asset, double width) {
+    return GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ProGallery(
+              initialIndex: _selectedAssets.indexOf(asset),
+              items: _selectedAssets,
+            );
+          }));
+        },
+        child: Container(
+          // 与BoxDecoration配合使用
+          clipBehavior: Clip.antiAlias,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(3)),
+          child: AssetEntityImage(
+            asset,
+            isOriginal: false,
+            width: width,
+            height: width,
+            fit: BoxFit.cover,
+          ),
+        ));
+  }
+
   // 图片列表
   Widget _bulidPhotoList() {
     return Padding(
@@ -37,19 +70,7 @@ class _ProWechatPostState extends State<ProWechatPost> {
             runSpacing: spaceing,
             children: [
               for (final asset in _selectedAssets)
-                Container(
-                  // 与BoxDecoration配合使用
-                  clipBehavior: Clip.antiAlias,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(3)),
-                  child: AssetEntityImage(
-                    asset,
-                    isOriginal: false,
-                    width: width,
-                    height: width,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                _buildPhotoItem(asset, width),
               if (_selectedAssets.length < 9)
                 GestureDetector(
                   onTap: () async {
@@ -75,12 +96,5 @@ class _ProWechatPostState extends State<ProWechatPost> {
             ],
           );
         }));
-  }
-
-  // 主图
-  Widget _buildMainView() {
-    return Column(
-      children: [_bulidPhotoList()],
-    );
   }
 }
