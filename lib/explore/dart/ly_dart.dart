@@ -25,6 +25,9 @@ class LyDart extends StatelessWidget {
           LyxyExploreItem(
               title: "4.bool",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/bool.md")),
+          LyxyExploreItem(
+              title: "5.String",
+              page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/string.md")),
         ],
       ),
     );
