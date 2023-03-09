@@ -17,8 +17,11 @@ class LyDart extends StatelessWidget {
               title: "1.var 变量",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/var.md")),
           LyxyExploreItem(
-              title: "2.const 常量",
+              title: "2.const常量  /  final ",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/const.md")),
+          LyxyExploreItem(
+              title: "3.运算符",
+              page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/num.md")),
         ],
       ),
     );
