@@ -29,8 +29,14 @@ class LyDart extends StatelessWidget {
               title: "5.String",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/string.md")),
           LyxyExploreItem(
-              title: "5.Datetime",
+              title: "6.Datetime",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/datetime.md")),
+          LyxyExploreItem(
+              title: "7.Set",
+              page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/set.md")),
+          LyxyExploreItem(
+              title: "7.enum",
+              page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/enum.md")),
         ],
       ),
     );
