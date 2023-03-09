@@ -40,7 +40,7 @@ class _ProGalleryState extends State<ProGallery>
     super.initState();
     visible = widget.isBarVisible ?? true;
     controller =
-        AnimationController(vsync: this, duration: Duration(microseconds: 400));
+        AnimationController(vsync: this, duration: Duration(microseconds: 200));
   }
 
   @override
