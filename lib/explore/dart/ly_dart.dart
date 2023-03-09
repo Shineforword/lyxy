@@ -14,8 +14,11 @@ class LyDart extends StatelessWidget {
       body: ListView(
         children: [
           LyxyExploreItem(
-              title: "1.var",
+              title: "1.var 变量",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/var.md")),
+          LyxyExploreItem(
+              title: "2.const 常量",
+              page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/const.md")),
         ],
       ),
     );
