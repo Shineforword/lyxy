@@ -35,7 +35,7 @@ class LyDart extends StatelessWidget {
               title: "7.Set",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/set.md")),
           LyxyExploreItem(
-              title: "7.enum",
+              title: "8.enum",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/enum.md")),
         ],
       ),
