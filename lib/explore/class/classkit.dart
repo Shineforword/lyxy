@@ -27,9 +27,13 @@ class ClassKit extends StatelessWidget {
               page:
                   LyxyCodes(mdpwd: "lib/assets/markdown/classkit/abstract.md")),
           LyxyExploreItem(
-              title: "4.interface ",
+              title: "5.interface ",
               page: LyxyCodes(
                   mdpwd: "lib/assets/markdown/classkit/interface.md")),
+          LyxyExploreItem(
+              title: "6.extends ",
+              page:
+                  LyxyCodes(mdpwd: "lib/assets/markdown/classkit/extends.md")),
         ],
       ),
     );
