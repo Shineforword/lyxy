@@ -68,6 +68,8 @@ flutter:
     - lib/assets/markdown/widget/
     - lib/assets/markdown/dart/
     - lib/assets/markdown/classkit/
+    - lib/assets/markdown/progress/
+
     - lib/assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see

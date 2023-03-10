@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../explore/class/classkit.dart';
 import '../explore/dart/ly_dart.dart';
+import '../explore/dart/ly_progress.dart';
 import '../explore/mdc/material_components.dart';
 import '../explore/constrains/constrains.dart';
 import '../explore/widget/lyxy_widget.dart';
@@ -18,6 +19,7 @@ class ProExplore extends StatelessWidget {
         children: [
           ListItem(title: "dart", page: LyDart()),
           ListItem(title: "库类接口继承", page: ClassKit()),
+          ListItem(title: "进阶", page: LyProgress()),
           ListItem(title: "constrains", page: Constrains()),
           ListItem(title: "widget", page: LyxyWidget()),
           ListItem(title: "mdc", page: MaterialComponents()),
