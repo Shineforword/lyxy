@@ -70,4 +70,5 @@ main(List<String> args) {
 }
 
 //Android Phone 开机
+//通过 extends 关键字 可以限定你可以泛型使用的类型
 ```
