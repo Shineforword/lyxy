@@ -55,6 +55,9 @@ class LyDart extends StatelessWidget {
           LyxyExploreItem(
               title: "A3.流程控制",
               page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/flow.md")),
+          LyxyExploreItem(
+              title: "A4.Error 处理",
+              page: LyxyCodes(mdpwd: "lib/assets/markdown/dart/error.md")),
         ],
       ),
     );
