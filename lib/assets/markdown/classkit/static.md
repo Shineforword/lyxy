@@ -52,3 +52,9 @@ People.printName();
 
 //ducafecat
 ```
+## 业务场景
+```dart
+//EasyLoading 用大量的 static 来方便方法调用
+
+
+```

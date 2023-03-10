@@ -1,54 +1,162 @@
-## static 静态变量
+## dart 没有interface
+
+## 接口
 ```dart
-//static 定义
-//声明
+//接口方式使用
+//定义人抽象类
+abstract class IPerson {
+  String name;
+  int age;
 
-class People {
-  static String name = 'ducafecat';
+  IPerson(this.name, this.age);
+
+  String info() {
+    return 'Name: $name, Age: $age';
+  }
 }
-//调用
+//接口用途的抽象类 请用字母 I 开头 , 如 IPhone
+```
 
-//静态变量可以通过外部直接访问,不需要将类实例化
+## 老师
+```dart
+class Teacher implements IPerson {
+  @override
+  String name;
 
-print(People.name);
+  @override
+  int age;
 
-//ducafecat
+  Teacher(this.name, this.age);
+
+  @override
+  String info() {
+    return 'Teacher -> Name: $name, Age: $age';
+  }
+}
+```
+
+## 学生
+```dart
+class Student implements IPerson {
+  @override
+  int age;
+
+  @override
+  String name;
+
+  Student(this.name, this.age);
+
+  @override
+  String info() {
+    return 'Student -> Name: $name, Age: $age';
+  }
+}
+
+
+```
+## 实例化
+```dart
+// 打印信息
+void makePersonInfo(IPerson user) => print(user.info());
+
+void main(List<String> args) {
+  var t = Teacher('ducafecat', 99);
+  makePersonInfo(t);
+
+  var s = Student('hans', 66);
+  makePersonInfo(s);
+}
+
+Teacher -> Name: ducafecat, Age: 99
+Student -> Name: hans, Age: 66
 
 ```
 
-## 函数内部访问
-
+## 履行多接口
 ```dart
-//实例化后的类也可以访问该静态变量
+//定义学校抽象类
+abstract class ISchool {
+  int grade;
 
-//声明
+  ISchool(this.grade);
 
-class People {
-  static String name = 'ducafecat';
-  void show() {
-    print(name);
+  String schoolInfo() {
+    return 'Grade: $grade';
   }
 }
-//调用
-People().show();
-// ducafecat
+//学生 多继承
+class Student implements IPerson, ISchool {
+  @override
+  int age;
+
+  @override
+  String name;
+
+  @override
+  int grade;
+
+  Student(this.name, this.age, this.grade);
+
+  @override
+  String info() {
+    return 'Student -> Name: $name, Age: $age';
+  }
+
+  @override
+  String schoolInfo() {
+    return 'School -> Name: $name, Age: $age, Grade: $grade';
+  }
+}
+// 打印信息
+void makePersonInfo(IPerson user) => print(user.info());
+void makeSchoolInfo(ISchool user) => print(user.schoolInfo());
+
+//实例化
+void main(List<String> args) {
+  var t = Teacher('ducafecat', 99);
+  makePersonInfo(t);
+
+  var s = Student('hans', 66, 5);
+  makePersonInfo(s);
+  makeSchoolInfo(s);
+}
+
+Teacher -> Name: ducafecat, Age: 99
+Student -> Name: hans, Age: 66
+School -> Name: hans, Age: 66, Grade: 5
+
 ```
 
-## 静态方法
+## 从一个普通类履行接口
 ```dart
-//静态方法可以通过外部直接访问
+class Phone {
+  void startup() {
+    print('开机');
+  }
 
-//声明
-
-class People {
-  static String name = 'ducafecat';
-  static void printName() {
-    print(name);
+  void shutdown() {
+    print('关机');
   }
 }
-//调用
 
-People.printName();
+class AndroidPhone implements Phone {
+  @override
+  void startup() {
+    print('AndroidPhone 开机');
+  }
 
-//ducafecat
+  @override
+  void shutdown() {
+    print('AndroidPhone 关机');
+  }
+}
+
+void main() {
+  var p = AndroidPhone();
+  p.startup();
+  p.shutdown();
+}
+// Dart 可以从一个普通的类履行接口
+
+
 ```
