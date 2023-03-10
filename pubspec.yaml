@@ -67,6 +67,7 @@ flutter:
     - lib/assets/markdown/constrains/
     - lib/assets/markdown/widget/
     - lib/assets/markdown/dart/
+    - lib/assets/markdown/classkit/
     - lib/assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
