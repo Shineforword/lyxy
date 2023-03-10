@@ -31,9 +31,16 @@ class ClassKit extends StatelessWidget {
               page: LyxyCodes(
                   mdpwd: "lib/assets/markdown/classkit/interface.md")),
           LyxyExploreItem(
-              title: "6.extends ",
+              title: "6.extends 继承",
               page:
                   LyxyCodes(mdpwd: "lib/assets/markdown/classkit/extends.md")),
+          LyxyExploreItem(
+              title: "7.factory ",
+              page:
+                  LyxyCodes(mdpwd: "lib/assets/markdown/classkit/factory.md")),
+          LyxyExploreItem(
+              title: "7.with 多继承 ",
+              page: LyxyCodes(mdpwd: "lib/assets/markdown/classkit/with.md")),
         ],
       ),
     );
