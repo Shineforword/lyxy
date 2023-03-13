@@ -19,9 +19,12 @@ class _ProWechatPostState extends State<ProWechatPost> {
   List<AssetEntity> _selectedAssets = [];
   // 是否开始拖拽
   bool isDragNow = false;
-
   // 是否删除
   bool isWillRemove = false;
+  // 是否将要排序
+  bool isWillOrder = false;
+  // 被拖拽的target id
+  String targatAssetId = "";
 
   @override
   Widget build(BuildContext context) {
@@ -92,27 +95,58 @@ class _ProWechatPostState extends State<ProWechatPost> {
             opacity: AlwaysStoppedAnimation(0.5),
           ),
         ),
-        child: GestureDetector(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return ProGallery(
-                  initialIndex: _selectedAssets.indexOf(asset),
-                  items: _selectedAssets,
-                );
-              }));
-            },
-            child: Container(
-              // 与BoxDecoration配合使用
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(3)),
-              child: AssetEntityImage(
-                asset,
-                isOriginal: false,
-                width: width,
-                height: width,
-                fit: BoxFit.cover,
-              ),
-            )));
+        child: DragTarget<AssetEntity>(
+          onWillAccept: (data) {
+            setState(() {
+              isWillOrder = true;
+              targatAssetId = asset.id;
+            });
+            return true;
+          },
+          onAccept: (data) {
+            //
+            final int index = _selectedAssets.indexOf(data);
+            final int targetIndex = _selectedAssets.indexOf(asset);
+            _selectedAssets.removeAt(index);
+            _selectedAssets.insert(targetIndex, data);
+            debugPrint("targetIndex:$targetIndex,dragIndex:$index");
+            setState(() {
+              isWillOrder = false;
+              targatAssetId = "";
+              _selectedAssets = _selectedAssets;
+            });
+          },
+          onLeave: (data) {
+            setState(() {
+              isWillOrder = false;
+              targatAssetId = "";
+            });
+          },
+          builder: (context, candidateData, rejectedData) {
+            return GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return ProGallery(
+                      initialIndex: _selectedAssets.indexOf(asset),
+                      items: _selectedAssets,
+                    );
+                  }));
+                },
+                child: Container(
+                  // 与BoxDecoration配合使用
+                  clipBehavior: Clip.antiAlias,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(3)),
+                  child: AssetEntityImage(
+                    asset,
+                    isOriginal: false,
+                    width: width,
+                    height: width,
+                    fit: BoxFit.cover,
+                  ),
+                ));
+          },
+        ));
   }
 
   // 图片列表
