@@ -2,9 +2,11 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:lyxy_app/pages/pro_zone/entity/menu.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 import '../../utils/config.dart';
+import 'post_appbar.dart';
 import 'pro_gallery.dart';
 
 class ProWechatPost extends StatefulWidget {
@@ -25,27 +27,105 @@ class _ProWechatPostState extends State<ProWechatPost> {
   bool isWillOrder = false;
   // 被拖拽的target id
   String targatAssetId = "";
+  // 内容输入控制器
+  final TextEditingController contentController = TextEditingController();
+  // 菜单列表
+  List<MenuItemModel> menus = [];
+  @override
+  void dispose() {
+    contentController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    menus = [
+      MenuItemModel(icon: Icons.location_on_outlined, title: "所在位置"),
+      MenuItemModel(icon: Icons.alternate_email_outlined, title: "提醒谁看"),
+      MenuItemModel(
+        icon: Icons.person_outline,
+        title: "谁可以看",
+        right: "公开",
+        onTap: () {},
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("发布"),
-      ),
-      body: _buildMainView(),
-      //_buildRemoveBar可以放在此处
-      // bottomSheet: ,
-    );
+        appBar: AppBarWidget(
+            //右侧
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 12),
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          ButtonStyleButton.allOrNull(Colors.green)),
+                  onPressed: () {},
+                  child: const Text("发布"),
+                ),
+              ),
+            ],
+            // 左侧
+            leading: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: Icon(
+                Icons.arrow_back_ios_new_outlined,
+                color: Colors.black38,
+              ),
+            )),
+        body: _buildMainView(),
+        //_buildRemoveBar可以放在此处
+        bottomSheet: isDragNow ? _buildRemoveBar() : null);
   }
 
   // 主图
   Widget _buildMainView() {
     return Column(
       children: [
+        // 内容输入
+        _buildContentInput(),
+        // 相册列表
         _bulidPhotoList(),
-        Spacer(),
-        isDragNow ? _buildRemoveBar() : SizedBox.shrink()
+        //
+        _buildMenus()
       ],
+    );
+  }
+
+  Widget _buildContentInput() {
+    return Padding(
+      padding: EdgeInsets.all(10),
+      child: LimitedBox(
+        maxHeight: 200,
+        child: TextField(
+          controller: contentController,
+          style: const TextStyle(
+            color: Colors.black54,
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+          ),
+          maxLines: null,
+          maxLength: 250,
+          decoration: InputDecoration(
+            hintText: '这一刻的想法...',
+            hintStyle: const TextStyle(
+              color: Colors.black12,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+            border: InputBorder.none,
+            counterText: contentController.text.isEmpty ? "" : null,
+          ),
+          onChanged: (value) {
+            setState(() {});
+          },
+        ),
+      ),
     );
   }
 
@@ -183,7 +263,8 @@ class _ProWechatPostState extends State<ProWechatPost> {
                       color: Colors.black38,
                     ),
                   ),
-                )
+                ),
+              if (_selectedAssets.length < 2) Container()
             ],
           );
         }));
@@ -234,5 +315,28 @@ class _ProWechatPostState extends State<ProWechatPost> {
       // 当被拖动到该目标上的给定数据离开时调用
       onLeave: (data) {},
     );
+  }
+
+  // 菜单项目
+  Widget _buildMenus() {
+    List<Widget> ws = [];
+    // ws.add(const DividerWidget());
+    for (var menu in menus) {
+      ws.add(ListTile(
+        leading: Icon(menu.icon),
+        title: Row(
+          children: [
+            Text(menu.title ?? ""),
+            if (menu.right != null) const Spacer(),
+            if (menu.right != null) Text(menu.right!),
+          ],
+        ),
+        trailing: const Icon(Icons.navigate_next_rounded),
+        // contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+        horizontalTitleGap: -5, // 标题与图标间距
+      ));
+      // ws.add(const DividerWidget());
+    }
+    return Column(children: ws);
   }
 }
