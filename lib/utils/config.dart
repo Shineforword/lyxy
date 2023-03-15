@@ -1,3 +1,5 @@
+// api url
+const String apiBaseUrl = "";
 // 间隙
 const double spaceing = 10.0;
 // 最大数
