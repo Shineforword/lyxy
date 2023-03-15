@@ -4,6 +4,7 @@ import 'config.dart';
 
 /// 微信 http
 class WxHttpUtil {
+  // 单例
   static final WxHttpUtil _instance = WxHttpUtil._internal();
   factory WxHttpUtil() => _instance;
   Dio? _dio;
