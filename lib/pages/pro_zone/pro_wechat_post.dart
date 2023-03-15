@@ -2,7 +2,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:lyxy_app/pages/pro_zone/entity/menu.dart';
+import 'package:lyxy_app/pages/pro_zone/entity/index.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
 
 import '../../utils/config.dart';

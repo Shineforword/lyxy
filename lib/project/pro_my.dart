@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 // ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
-import 'package:lyxy_app/pages/pro_zone/pro_wechat_post.dart';
 
+import '../pages/pro_zone/index.dart';
 import './pro_login.dart';
 
 class ProMy extends StatelessWidget {
@@ -30,11 +30,8 @@ class ProMy extends StatelessWidget {
                 icon: Icon(Icons.collections, size: 20, color: Colors.blue)),
             ProMyItem(
                 itemClicked: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      fullscreenDialog: true,
-                      builder: (BuildContext context) {
-                        return ProWechatPost();
-                      }));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => TimelinePage()));
                 },
                 title: "Zone",
                 icon: Icon(Icons.child_friendly, size: 20, color: Colors.blue)),
