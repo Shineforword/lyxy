@@ -9,6 +9,7 @@ import '../src/lyxy_explore_Item.dart';
 import '../widget/lyxy_widget_life.dart';
 import 'package:lyxy_app/explore/src/lyxy_codes.dart';
 
+import 'lyxy_richText.dart';
 import 'lyxy_scaffold.dart';
 import 'lyxy_tabController.dart';
 import 'lyxy_text.dart';
@@ -48,6 +49,7 @@ class LyxyWidget extends StatelessWidget {
           LyxyExploreItem(
               title: "12.DefaultTabController", page: LyxyTabController()),
           LyxyExploreItem(title: "13.View 网格视图 ", page: ViewDemo()),
+          LyxyExploreItem(title: "14.RichText 富文本 ", page: RichTextDemo()),
         ],
       ),
     );
