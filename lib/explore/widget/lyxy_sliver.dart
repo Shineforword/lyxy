@@ -42,11 +42,13 @@ class SliverPage extends StatelessWidget {
             //   ),
             // ),
           ),
-          SliverSafeArea(
-              sliver: SliverPadding(
-                  // padding: EdgeInsets.all(8.0), sliver: SliverGridDemo()
-                  padding: EdgeInsets.all(8.0),
-                  sliver: SliverListDemo()))
+          // SliverSafeArea(
+          // sliver:
+          SliverPadding(
+              // padding: EdgeInsets.all(8.0), sliver: SliverGridDemo()
+              padding: EdgeInsets.all(8.0),
+              sliver: SliverListDemo())
+          // )
         ],
       ),
     );
@@ -72,6 +74,7 @@ class SliverListDemo extends StatelessWidget {
                       AspectRatio(
                         aspectRatio: 16 / 9,
                         child: Container(
+                          clipBehavior: Clip.antiAlias,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12.0),
                           ),

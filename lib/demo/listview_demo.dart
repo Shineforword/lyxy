@@ -9,8 +9,12 @@ class ListViewDemo extends StatelessWidget {
   // 自定义小物件(嵌套)
   Widget _itemListBuilder(BuildContext context, int index) {
     return Container(
-      color: Colors.white,
       margin: const EdgeInsets.all(8),
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.white,
+      ),
       child: Stack(
         children: <Widget>[
           Column(
