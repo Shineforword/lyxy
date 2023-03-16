@@ -9,8 +9,10 @@ import '../src/lyxy_explore_Item.dart';
 import '../widget/lyxy_widget_life.dart';
 import 'package:lyxy_app/explore/src/lyxy_codes.dart';
 
+import 'lyxy_dev_tools.dart';
 import 'lyxy_richText.dart';
 import 'lyxy_scaffold.dart';
+import 'lyxy_sliver.dart';
 import 'lyxy_tabController.dart';
 import 'lyxy_text.dart';
 import 'lyxy_widget_app_life.dart';
@@ -50,6 +52,8 @@ class LyxyWidget extends StatelessWidget {
               title: "12.DefaultTabController", page: LyxyTabController()),
           LyxyExploreItem(title: "13.View 网格视图 ", page: ViewDemo()),
           LyxyExploreItem(title: "14.RichText 富文本 ", page: RichTextDemo()),
+          LyxyExploreItem(title: "15.Sliver  ", page: SliverPage()),
+          LyxyExploreItem(title: "16.DevTools 调试工具", page: LyxyDevTools()),
         ],
       ),
     );
