@@ -3,9 +3,13 @@
 
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
+import 'package:lyxy_app/api/timeline.dart';
+import 'package:lyxy_app/model/timeline/timeline.dart';
 import 'package:lyxy_app/pages/pro_zone/post_appbar.dart';
 import 'package:lyxy_app/pages/pro_zone/pro_wechat_post.dart';
 
+import '../../utils/index.dart';
+import '../../widgets/index.dart';
 import 'entity/index.dart';
 
 class TimelinePage extends StatefulWidget {
@@ -18,17 +22,35 @@ class TimelinePage extends StatefulWidget {
 class _TimelinePageState extends State<TimelinePage> {
   // 用户资料
   UserModel? _user;
+  // 列表
+  List<TimelineModel> _items = [];
+  // 载入数据
+  Future _loadData() async {
+    var resluts = await TimelineApi.pageLocationList();
+    if (mounted) {
+      setState(() {
+        _items = resluts;
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     // 初始用户资料
     _user = const UserModel(
-      nickname: "前",
+      nickname: "敦煌",
       avator:
           "https://upload-images.jianshu.io/upload_images/28020825-8f914692886fa6d0.jpg",
       cover:
           "https://upload-images.jianshu.io/upload_images/28020825-fad7d1a9c9a98051.jpg",
     );
+    //
+    if (mounted) {
+      setState(() {});
+    }
+    //
+    _loadData();
   }
 
   @override
@@ -65,9 +87,141 @@ class _TimelinePageState extends State<TimelinePage> {
 
   // 主视图
   Widget _mainView() {
-    return Column(
+    return CustomScrollView(
+      // controller: _scrollController,
+      slivers: [
+        // 头部
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: _buildHeader(),
+          ),
+        ),
+
+        // 数据列表
+        _buildList(),
+      ],
+    );
+  }
+
+  // 动态列表
+  Widget _buildList() {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(
+        (BuildContext context, int index) {
+          var item = _items[index];
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: _buildListItem(item),
+              ),
+              const SpaceVerticalWidget(),
+            ],
+          );
+        },
+        childCount: _items.length,
+      ),
+    );
+  }
+
+  // 动态数据项
+  Widget _buildListItem(TimelineModel item) {
+    int imgCount = item.images?.length ?? 0;
+
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        _buildHeader(),
+        // 圆角头像
+        ClipRRect(
+          borderRadius: BorderRadius.circular(radius),
+          child: Image.network(
+            item.user?.avator ?? "",
+            height: 48,
+            width: 48,
+            fit: BoxFit.cover,
+          ),
+        ),
+        const SizedBox(width: spaceing),
+
+        // 右侧
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // 昵称
+              Text(
+                item.user?.nickname ?? "",
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Colors.black87,
+                ),
+              ),
+              const SpaceVerticalWidget(),
+
+              // 内容
+              Text(
+                item.content ?? "",
+                style: const TextStyle(
+                  // fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.black54,
+                ),
+              ),
+              const SpaceVerticalWidget(),
+
+              // 9宫格图片
+              LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+                  double ingWidth = imgCount == 1
+                      ? constraints.maxWidth * 0.7
+                      : (constraints.maxWidth -
+                              spaceing * 2 -
+                              imagePadding * 2 * 3) /
+                          3;
+                  return Wrap(
+                    spacing: spaceing,
+                    runSpacing: spaceing,
+                    children: [
+                      for (var item in item.images ?? [])
+                        Image.network(
+                          DuTools.imageUrlFormat(item ?? "",
+                              width: imgCount == 1 ? 400 : null),
+                          height: ingWidth,
+                          width: ingWidth,
+                          fit: BoxFit.cover,
+                        ),
+                    ],
+                  );
+                },
+              ),
+              const SpaceVerticalWidget(),
+
+              // 位置
+              Text(
+                item.location ?? "",
+                style: const TextStyle(
+                  fontSize: 15,
+                  color: Colors.black54,
+                ),
+              ),
+              const SpaceVerticalWidget(),
+
+              // 时间
+              Text(
+                item.publishDate ?? "",
+                style: const TextStyle(
+                  fontSize: 15,
+                  color: Colors.black54,
+                ),
+              ),
+              const SpaceVerticalWidget(),
+            ],
+          ),
+        ),
       ],
     );
   }

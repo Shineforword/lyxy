@@ -1,7 +1,7 @@
 import 'user.dart';
 import 'video.dart';
 
-class Timeline {
+class TimelineModel {
   String? id;
   List<String>? images;
   VideoModel? video;
@@ -11,7 +11,7 @@ class Timeline {
   String? publishDate;
   String? location;
 
-  Timeline({
+  TimelineModel({
     this.id,
     this.images,
     this.video,
@@ -22,7 +22,7 @@ class Timeline {
     this.location,
   });
 
-  factory Timeline.fromJson(Map<String, dynamic> json) => Timeline(
+  factory TimelineModel.fromJson(Map<String, dynamic> json) => TimelineModel(
         id: json['id'] as String?,
         images: json['images'] as List<String>?,
         video: json['video'] == null
