@@ -2,6 +2,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import '../demo/listview_demo.dart';
+import '../widgets/index.dart';
 
 class ProHomepage extends StatelessWidget {
   const ProHomepage({Key? key}) : super(key: key);
@@ -17,11 +18,14 @@ class ProHomepage extends StatelessWidget {
         ),
         elevation: 0.0,
         backgroundColor: Colors.blue,
-        actions: const <Widget>[
+        actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.search),
-            tooltip: "search",
-            onPressed: null,
+            icon: Icon(Icons.qr_code_scanner),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const QRViewExample(),
+              ));
+            },
           ),
         ],
       ),
