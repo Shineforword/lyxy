@@ -1,11 +1,19 @@
 // ignore_for_file: prefer_const_constructors
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import '../model/post.dart';
 import 'post_detail.dart';
+import 'package:easy_refresh/easy_refresh.dart';
 
-/// ListViewDemo
-class ListViewDemo extends StatelessWidget {
+class ListViewDemo extends StatefulWidget {
   const ListViewDemo({Key? key}) : super(key: key);
+
+  @override
+  _ListViewDemoState createState() => _ListViewDemoState();
+}
+
+class _ListViewDemoState extends State<ListViewDemo> {
   // 自定义小物件(嵌套)
   Widget _itemListBuilder(BuildContext context, int index) {
     return Container(
@@ -62,9 +70,30 @@ class ListViewDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: posts.length,
-      itemBuilder: _itemListBuilder,
+    return EasyRefresh(
+      onRefresh: () {
+        posts.insert(0, posts[Random().nextInt(13)]);
+        posts.insert(0, posts[Random().nextInt(13)]);
+        setState(() {
+          ListView.builder(
+              itemCount: posts.length, itemBuilder: _itemListBuilder);
+        });
+      },
+      onLoad: () {
+        posts.add(posts[Random().nextInt(13)]);
+        setState(() {
+          ListView.builder(
+              itemCount: posts.length, itemBuilder: _itemListBuilder);
+        });
+      },
+      child: ListView.builder(
+        itemCount: posts.length,
+        itemBuilder: _itemListBuilder,
+      ),
     );
+    // return ListView.builder(
+    //   itemCount: posts.length,
+    //   itemBuilder: _itemListBuilder,
+    // );
   }
 }
