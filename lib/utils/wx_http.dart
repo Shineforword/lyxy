@@ -13,7 +13,7 @@ class WxHttpUtil {
     if (_dio == null) {
       _dio = Dio();
       _dio?.options = BaseOptions(
-        baseUrl: apiBaseUrl,
+        baseUrl: lyxyMockApiPostHost,
         connectTimeout: const Duration(seconds: 10), // 10秒
         receiveTimeout: const Duration(seconds: 5), // 5秒
         headers: {},
